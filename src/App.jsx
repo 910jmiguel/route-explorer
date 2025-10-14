@@ -73,6 +73,11 @@ export default function App() {
   function toggleFavorite(id) {
     // TODO: check if id is in prev array
     // TODO: if yes, remove it (use .filter())
+    // TODO: if no, add it (use spread [...prev, id])
+    // TODO: return the new array
+    setFavourites(prev => 
+      prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id]
+    );
   }
 
   return (
@@ -101,10 +106,10 @@ export default function App() {
         {displayed.length === 0 ? (
           <p>No routes match your search.</p>
         ) : (
-          <div className="grid">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayed.map(route => (
               <article key={route.id} className={`card ${favorites.includes(route.id) ? "fav" : ""}`}>
-                <h2>{route.name}</h2>
+                <h2 className="... break-words">{route.name}</h2>
                 <p>Stops: {route.stops.join(", ")}</p>
                 <p>ETA: {route.etaMinutes} min</p>
                 <button
