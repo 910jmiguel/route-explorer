@@ -80,10 +80,13 @@ export default function App() {
     );
   }
 
+  if(error) return <div>Error: {error}</div>;
+  if(!routes) return <div>Loading routes...</div>;
+
   return (
-    <div className="app">
+    <div className="mx-auto p-8 bg-gray-50 min-h-screen">
       <header>
-        <h1>Route Explorer</h1>
+        <h1 className="text-3xl font-bold mb-4">Route Explorer</h1>
         <label>
           Search
           <input
